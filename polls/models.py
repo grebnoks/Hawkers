@@ -30,3 +30,15 @@ class Student(models.Model):
     age = models.IntegerField(default=0)
     def __str__(self):
         return self.name
+
+class Feedback(models.Model) :
+    timestamp = models.DateTimeField('date published')
+    satisfactory_level = models.IntegerField()
+    comments = models.TextField()
+
+class LocationBasedData(models.Model) :
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    hotspotRadius = models.IntegerField()
+    visitorCount = models.IntegerField()
+    trailInfo = models.TextField()
