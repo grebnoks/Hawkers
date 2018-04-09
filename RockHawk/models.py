@@ -8,6 +8,9 @@ class Feedback(models.Model) :
     timestamp = models.DateTimeField('date published')
     satisfactory_level = models.IntegerField()
     comments = models.TextField()
+    def __str__(self):
+        return '%s %s %s'%(self.timestamp, self.satisfactory_level, self.comments)
+    
 
     class Meta:
         permissions = (
@@ -21,3 +24,5 @@ class LocationData(models.Model) :
     hotspotRadius = models.IntegerField()
     visitorCount = models.IntegerField()
     trailInfo = models.TextField()
+    def __str__(self):
+        return '%s %s %s %s %s %s'%(self.name, self.latitude, self.longitude, self.hotspotRadius, self.visitorCount, self.trailInfo)
