@@ -24,5 +24,12 @@ class LocationData(models.Model) :
     hotspotRadius = models.IntegerField()
     visitorCount = models.IntegerField()
     trailInfo = models.TextField()
+    LOCATIONTYPES = (
+                    (0, 'Facility'),
+                    (1, 'Activity'),
+                    (2, 'Hotspot'),
+                )
+    locationType = models.IntegerField(choices=LOCATIONTYPES)
     def __str__(self):
-        return '%s %s %s %s %s %s'%(self.name, self.latitude, self.longitude, self.hotspotRadius, self.visitorCount, self.trailInfo)
+        return '%s %s %s %s %s %s %s'%(self.name, self.latitude, self.longitude, self.hotspotRadius, self.visitorCount, self.trailInfo, self.locationType)
+

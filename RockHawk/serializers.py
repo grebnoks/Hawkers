@@ -26,7 +26,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
 class LocationDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = LocationData
-        fields = ('name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo')
+        fields = ('name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType')
 
     def create(self, validated_data):
         """
@@ -41,8 +41,9 @@ class LocationDataSerializer(serializers.ModelSerializer):
         instance.name = validated_data.get('name', instance.name)
         instance.latitude = validated_data.get('latitude', instance.latitude)
         instance.longitude = validated_data.get('longitude', instance.longitude)
-        nstance.hotspotRadius = validated_data.get('hotspotRadius', instance.hotspotRadius)
-        nstance.visitorCount = validated_data.get('visitorCount', instance.visitorCount)
-        nstance.trailInfo = validated_data.get('trailInfo', instance.trailInfo)
+        instance.hotspotRadius = validated_data.get('hotspotRadius', instance.hotspotRadius)
+        instance.visitorCount = validated_data.get('visitorCount', instance.visitorCount)
+        instance.trailInfo = validated_data.get('trailInfo', instance.trailInfo)
         instance.save()
         return instance
+
