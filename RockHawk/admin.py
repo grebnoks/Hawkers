@@ -22,9 +22,10 @@ class LocationDataAdmin(admin.ModelAdmin):
         (None,               {'fields': ['hotspotRadius']}),
         (None,               {'fields': ['visitorCount']}),
         (None,               {'fields': ['trailInfo']}),
+        (None,               {'fields': ['locationType']}),
     ]
-    list_display = ('name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo')
-    search_fields = ['name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo']
+    list_display = ('name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType')
+    search_fields = ['name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType']
 
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(LocationData, LocationDataAdmin)
