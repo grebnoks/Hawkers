@@ -46,7 +46,7 @@ def feedback_detail(request, pk, format=None):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = FeedbackSerializer(feedback, data=data)
+        serializer = FeedbackSerializer(feedback, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -71,7 +71,7 @@ def locationData_list(request, format=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT', 'DELETE', 'PATCH'])
 def locationData_detail(request, pk, format=None):
     try:
         locationData = LocationData.objects.get(pk=pk)
@@ -83,7 +83,14 @@ def locationData_detail(request, pk, format=None):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = LocationDataSerializer(locationData, data=data)
+        serializer = LocationDataSerializer(locationData, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'PATCH':
+        serializer = LocationDataSerializer(locationData.visitorCount, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
