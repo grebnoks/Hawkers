@@ -19,6 +19,7 @@ pip3 install psycopg2
 apt-get install postresql
 apt-get install python-psycopg2
 apt-get install libq-dev
+python -m pip install pyserial
 
 
 to access database command line from server:

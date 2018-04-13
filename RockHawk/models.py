@@ -1,4 +1,5 @@
 import datetime
+import serial
 
 from django.db import models
 from django.utils import timezone
@@ -17,8 +18,11 @@ class Feedback(models.Model) :
             ('view_feedback', 'View feedback'),
         )
 
+
+
 class LocationData(models.Model) :
-    name = models.TextField()
+    id = models.AutoField(primary_key=True,)
+    name = models.TextField(unique=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
     hotspotRadius = models.IntegerField()
@@ -31,5 +35,5 @@ class LocationData(models.Model) :
                 )
     locationType = models.IntegerField(choices=LOCATIONTYPES)
     def __str__(self):
-        return '%s %s %s %s %s %s %s'%(self.name, self.latitude, self.longitude, self.hotspotRadius, self.visitorCount, self.trailInfo, self.locationType)
+        return '%s %s %s %s %s %s %s %s'%(self.id, self.name, self.latitude, self.longitude, self.hotspotRadius, self.visitorCount, self.trailInfo, self.locationType)
 

@@ -26,7 +26,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
 class LocationDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = LocationData
-        fields = ('name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType')
+        fields = ('ID', 'name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType')
 
     def create(self, validated_data):
         """
@@ -38,6 +38,7 @@ class LocationDataSerializer(serializers.ModelSerializer):
         """
         Update and return an existing `Snippet` instance, given the validated data.
         """
+        instance.ID = validated_data.get('ID', instance.ID)
         instance.name = validated_data.get('name', instance.name)
         instance.latitude = validated_data.get('latitude', instance.latitude)
         instance.longitude = validated_data.get('longitude', instance.longitude)

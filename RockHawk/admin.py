@@ -15,6 +15,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 
 class LocationDataAdmin(admin.ModelAdmin):
+    readonly_fields = ('id',)
     fieldsets = [
         (None,               {'fields': ['name']}),
         (None,               {'fields': ['latitude']}),
@@ -24,8 +25,8 @@ class LocationDataAdmin(admin.ModelAdmin):
         (None,               {'fields': ['trailInfo']}),
         (None,               {'fields': ['locationType']}),
     ]
-    list_display = ('name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType')
-    search_fields = ['name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType']
+    list_display = ('id', 'name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType')
+    search_fields = ['id', 'name', 'latitude', 'longitude', 'hotspotRadius', 'visitorCount', 'trailInfo', 'locationType']
 
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(LocationData, LocationDataAdmin)
