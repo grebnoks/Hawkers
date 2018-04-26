@@ -1,0 +1,7 @@
+-Change the Black pins on the map to be a different color so they are more noticeable.
+-Add additional optional fields for the feedback section (such as First Name, Last Name, Email, and phone number)
+-Keep track of the amount of money entered in the donations page
+-Have options for donating such as buttons that say: Donate 10$, Donate 25$ and so on...
+-make the map button more obvious on the front end
+-add image for each landmark on both front end and backend
+-distinguish the trails on the front end and back end

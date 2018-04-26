@@ -17,12 +17,15 @@ from django.urls import include, path
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('locationData_list/', include('RockHawk.urls')),
     path('feedback_list/', include('RockHawk.urls')),
     path('admin/', admin.site.urls),
+    url('', admin.site.urls),
     url(r'^', include('RockHawk.urls')),
     url(r'^RockHawk/', include('RockHawk.urls')),
     url('admin/password/change/$', 
@@ -45,4 +48,5 @@ urlpatterns = [
     url('admin/password/reset/complete/$', 
         auth_views.PasswordResetCompleteView.as_view(), 
         name='password_reset_complete'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
