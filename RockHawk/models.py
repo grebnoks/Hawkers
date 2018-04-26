@@ -54,6 +54,7 @@ class TrailData(models.Model) :
                     (0, 'Foot'),
                     (1, 'Biking'),
                     (2, 'Multi-Use'),
+                    (3, 'Plant'),
                 )
     trail_type = models.IntegerField(choices=TRAILTYPES)
     def __str__(self):

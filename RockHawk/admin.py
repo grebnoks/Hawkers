@@ -1,7 +1,5 @@
 from django.contrib import admin
-
 from .models import Feedback, LocationData, TrailData
-#from PIL import Image
 
 
 class FeedbackAdmin(admin.ModelAdmin):
