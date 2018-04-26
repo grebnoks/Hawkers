@@ -2,19 +2,16 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from RockHawk.models import Feedback, LocationData
-from RockHawk.serializers import FeedbackSerializer, LocationDataSerializer
+from RockHawk.models import Feedback, LocationData, TrailData
+from RockHawk.serializers import FeedbackSerializer, LocationDataSerializer, TrailDataSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.template import RequestContext
-
-# Create your views here.
 from django.http import HttpResponseRedirect, HttpRequest
 from django.utils import timezone
 
@@ -71,7 +68,7 @@ def locationData_list(request, format=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'PUT', 'DELETE', 'PATCH'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def locationData_detail(request, pk, format=None):
     try:
         locationData = LocationData.objects.get(pk=pk)
@@ -89,13 +86,43 @@ def locationData_detail(request, pk, format=None):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'PATCH':
-        serializer = LocationDataSerializer(locationData.visitorCount, data=request.data, partial=True)
+    elif request.method == 'DELETE':
+        locationData.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST'])
+def trailData_list(request, format=None):
+    if request.method == 'GET':
+        trailData = TrailData.objects.all()
+        serializer = TrailDataSerializer(trailData, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = TrailDataSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def trailData_detail(request, pk, format=None):
+    try:
+        trailData = TrailData.objects.get(pk=pk)
+    except TrailData.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = TrailDataSerializer(trailData)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = TrailDataSerializer(trailData, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        locationData.delete()
+        trailData.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

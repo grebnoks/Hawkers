@@ -26,6 +26,8 @@ SECRET_KEY = '31#hmvh+ef*j6lpg*r0+og3hbtmt0p3y5al9m=&jt@ytc4srj$'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+MEDIA_ROOT = 'C:/Users/Marshall Smith/Desktop/Django/mysite/RockHawk/media'
+MEDIA_URL = '/media/'
 
 
 # Application definition

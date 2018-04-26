@@ -20,6 +20,7 @@ apt-get install postresql
 apt-get install python-psycopg2
 apt-get install libq-dev
 python -m pip install pyserial
+pip install Pillow
 
 
 to access database command line from server:
@@ -30,5 +31,7 @@ psql mydatabase
 API points:
 http://localhost:8000/feedback_list/
 http://localhost:8000/locationData_list/
-http://localhost:8000/RockHawk/locationData/2/    The 2 is the ID of the specific location
-http://localhost:8000/RockHawk/feedback/2/  	  The 2 is the ID of the specific location
+http://localhost:8000/trailData_list/
+http://localhost:8000/feedback_detail/2/    The 2 is the ID of the specific location
+http://localhost:8000/locationData_detail/2/  	  The 2 is the ID of the specific location
+http://localhost:8000/trailData_detail/2/  	  The 2 is the ID of the specific location
