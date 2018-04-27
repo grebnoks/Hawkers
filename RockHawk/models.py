@@ -10,7 +10,7 @@ from django.contrib.postgres.fields import ArrayField
 class Feedback(models.Model) :
     timestamp = models.DateTimeField('date published')
     satisfactory_level = models.IntegerField()
-    comments = models.TextField()
+    comments = models.TextField(blank=True)
     name = models.TextField(blank=True)
     email = models.TextField(blank=True)
     phone_number = models.TextField(blank=True)
