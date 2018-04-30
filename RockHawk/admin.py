@@ -41,10 +41,11 @@ class TrailDataAdmin(admin.ModelAdmin):
         (None,               {'fields' : ['trail_latitudes']}),
         (None,               {'fields' : ['trail_longitudes']}),
         (None,               {'fields' : ['trail_type']}),
+        (None,               {'fields' : ['trail_color']}),
     ]
-    list_display = ('id', 'name', 'trail_info', 'trail_length_in_miles', 'trail_latitudes', 'trail_longitudes', 'trail_type')
-    list_filter = ['trail_type']
-    search_fields = ['id', 'name', 'trail_length_in_miles', 'trail_type']
+    list_display = ('id', 'name', 'trail_info', 'trail_length_in_miles', 'trail_latitudes', 'trail_longitudes', 'trail_type', 'trail_color')
+    list_filter = ['trail_type', 'trail_color']
+    search_fields = ['id', 'name', 'trail_length_in_miles', 'trail_type', 'trail_color']
 
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(LocationData, LocationDataAdmin)
