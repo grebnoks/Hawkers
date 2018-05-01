@@ -2,7 +2,6 @@ from django.urls import path
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
-from django.views.decorators.csrf import csrf_exempt
 
 app_name = 'RockHawk'
 urlpatterns = [
@@ -12,9 +11,9 @@ urlpatterns = [
     url('locationData_detail/(?P<pk>[0-9]+)/$', views.locationData_detail, name='locationData_detail'),
     url('trailData_list/', views.trailData_list, name='trailData_list'),
     url('trailData_detail/(?P<pk>[0-9]+)/$', views.trailData_detail, name='trailData_detail'),
-    url(r'^RockHawk/feedback/$', csrf_exempt(views.feedback_list)),
+    url(r'^RockHawk/feedback/$', views.feedback_list),
     url(r'^RockHawk/feedback/(?P<pk>[0-9]+)/$', views.feedback_detail),
-    url(r'^RockHawk/locationData/$', csrf_exempt(views.locationData_list)),
+    url(r'^RockHawk/locationData/$', views.locationData_list),
     url(r'^RockHawk/locationData/(?P<pk>[0-9]+)/$', views.locationData_detail),
 ]
 

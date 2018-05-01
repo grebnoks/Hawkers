@@ -10,7 +10,7 @@ from django.contrib.postgres.fields import ArrayField
 class Feedback(models.Model) :
     timestamp = models.DateTimeField('date published')
     satisfactory_level = models.IntegerField()
-    comments = models.TextField()
+    comments = models.TextField(blank=True)
     name = models.TextField(blank=True)
     email = models.TextField(blank=True)
     phone_number = models.TextField(blank=True)
@@ -54,8 +54,18 @@ class TrailData(models.Model) :
                     (0, 'Foot'),
                     (1, 'Biking'),
                     (2, 'Multi-Use'),
+                    (3, 'Plant'),
                 )
     trail_type = models.IntegerField(choices=TRAILTYPES)
+    TRAILCOLORS = (
+                    (0, 'Red'),
+                    (1, 'Blue'),
+                    (2, 'Orange'),
+                    (3, 'Green'),
+                    (4, 'Yellow'),
+                    (5, 'White'),
+                )
+    trail_color = models.IntegerField(choices=TRAILCOLORS)
     def __str__(self):
-        return '%s %s %s %s %s %s %s'%(self.id, self.name, self.trail_info, self.trail_length_in_miles, self.trail_latitudes, self.trail_longitudes, self.trail_type)
+        return '%s %s %s %s %s %s %s %s'%(self.id, self.name, self.trail_info, self.trail_length_in_miles, self.trail_latitudes, self.trail_longitudes, self.trail_type, self.trail_color)
 

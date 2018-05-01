@@ -56,7 +56,7 @@ class LocationDataSerializer(serializers.ModelSerializer):
 class TrailDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrailData
-        fields = ('id', 'name', 'trail_info', 'trail_length_in_miles', 'trail_latitudes', 'trail_longitudes', 'trail_type')
+        fields = ('id', 'name', 'trail_info', 'trail_length_in_miles', 'trail_latitudes', 'trail_longitudes', 'trail_type', 'trail_color')
 
     def create(self, validated_data):
         """
@@ -75,6 +75,7 @@ class TrailDataSerializer(serializers.ModelSerializer):
         instance.trail_latitudes = validated_data.get('trail_latitudes', instance.trail_latitudes)
         nstance.trail_longitudes = validated_data.get('trail_longitudes', instance.trail_longitudes)
         instance.trail_type = validated_data.get('trail_type', instance.trail_type)
+        instance.trail_color = validated_data.get('trail_color', instance.trail_color)
         instance.save()
         return instance
 
