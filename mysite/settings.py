@@ -26,11 +26,11 @@ SECRET_KEY = '31#hmvh+ef*j6lpg*r0+og3hbtmt0p3y5al9m=&jt@ytc4srj$'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-MEDIA_ROOT = 'C:/Users/Marshall Smith/Desktop/Django/mysite/RockHawk/media'
+
 MEDIA_URL = '/media/'
 
 
-# Application definition
+# Application definition, no need to change this
 
 INSTALLED_APPS = [
     'admin_view_permission',
@@ -44,17 +44,17 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
+#Redirects users to the home admin page
 LOGIN_REDIRECT_URL = 'admin/'
 
+#Basic settings needed for REST framework, do not change
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     )
 }
 
-
+#Basic installations that come with django, do not change.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,6 +67,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+#In case if you need to make templates, no need to change
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

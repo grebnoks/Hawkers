@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
+#These urls specify the base urls the web site uses.
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('RockHawk.urls')),

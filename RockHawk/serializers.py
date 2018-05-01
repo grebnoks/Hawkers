@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from RockHawk.models import Feedback, LocationData, TrailData
 
+#This file is related to the Serializers that convert data and save them to the database.
+#For each Meta class, the model must equal the model you defined in the models.py file, so the serializer can convert and save data accordingly to the model.
+#For each update in the classes, every model field must be updated, otherwise data will be missing and the code will break.
 
 class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
