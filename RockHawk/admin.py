@@ -36,7 +36,7 @@ class LocationDataAdmin(admin.ModelAdmin):
         (None,               {'fields' : ['location_type']}),
     ]
     #The line below allows the admin site to display the fields of the model mentioned in the brackets.
-    list_display = ('id', 'picture', 'name', 'latitude', 'longitude', 'hotspot_radius', 'visitor_count', 'hotspot_radius', 'location_type')
+    list_display = ('id', 'picture', 'name', 'latitude', 'longitude', 'hotspot_radius', 'visitor_count', 'location_type')
     #The line below allows the admin site to add a filter based on the model fields mentioned in the brackets.
     list_filter = ['location_type']
     #The line below allows the admin site to add a search bar that will search based on the models fields mentioned in the brackets.
