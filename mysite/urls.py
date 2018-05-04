@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 #These urls specify the base urls the web site uses.
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     url(r'^', include('RockHawk.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
